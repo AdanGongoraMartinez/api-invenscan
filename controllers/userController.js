@@ -13,7 +13,7 @@ export const getUserById = async (req, res) => {
   const { id_usuario } = req.params;
   try {
     const result = await db.execute({
-      sql: 'SELECT * FROM Usuarios WHERE id_usuario  = (:id_usuario )',
+      sql: 'SELECT * FROM Usuarios WHERE id_usuario = (:id_usuario)',
       args: { id_usuario }
     });
     res.json(result.rows[0]);

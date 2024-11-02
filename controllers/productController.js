@@ -44,7 +44,7 @@ export const updateProduct = async (req, res) => {
     });
     res.status(201).json(result.rows[0]);
   } catch (error) {
-    res.status(500).json({ error: 'Error al crear el Producto' });
+    res.status(500).json({ error: 'Error al actualizar el Producto' });
   }
 };
 
