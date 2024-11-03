@@ -39,7 +39,7 @@ export const updateProduct = async (req, res) => {
   const { id_producto, nombre, descripcion, precio, categoria, fecha_agregado } = req.body;
   try {
     const result = await db.execute({
-      sql: 'UPDATE Productos SET id_producto=:id_producto, nombre=:nombre, descripcion=:descripcion, precio=:precio, categoria=:categoria, fecha_agregado=:fecha_agregado',
+      sql: 'UPDATE Productos SET nombre=:nombre, descripcion=:descripcion, precio=:precio, categoria=:categoria, fecha_agregado=:fecha_agregado WHERE id_producto=:id_producto',
       args: { id_producto, nombre, descripcion, precio, categoria, fecha_agregado }
     });
     res.status(201).json(result.rows[0]);

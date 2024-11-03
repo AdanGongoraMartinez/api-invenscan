@@ -36,11 +36,11 @@ export const deleteClient = async (req, res) => {
 };
 
 export const updateClient = async (req, res) => {
-  const { nombre, direccion, telefono, email, fecha_registro } = req.body;
+  const { id_cliente, nombre, direccion, telefono, email, fecha_registro } = req.body;
   try {
     const result = await db.execute({
-      sql: 'UPDATE Productos SET nombre=:nombre, direccion=:direccion, telefono=:telefono, email=:email, fecha_registro=:fecha_registro',
-      args: { nombre, direccion, telefono, email, fecha_registro }
+      sql: 'UPDATE Productos SET nombre=:nombre, direccion=:direccion, telefono=:telefono, email=:email, fecha_registro=:fecha_registro WHERE id_cliente=:id_cliente',
+      args: { id_cliente, nombre, direccion, telefono, email, fecha_registro }
     });
     res.status(201).json(result.rows[0]);
   } catch (error) {
