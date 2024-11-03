@@ -39,7 +39,7 @@ export const updateClient = async (req, res) => {
   const { id_cliente, nombre, direccion, telefono, email, fecha_registro } = req.body;
   try {
     const result = await db.execute({
-      sql: 'UPDATE Productos SET nombre=:nombre, direccion=:direccion, telefono=:telefono, email=:email, fecha_registro=:fecha_registro WHERE id_cliente=:id_cliente',
+      sql: 'UPDATE Clientes SET nombre=:nombre, direccion=:direccion, telefono=:telefono, email=:email, fecha_registro=:fecha_registro WHERE id_cliente=:id_cliente',
       args: { id_cliente, nombre, direccion, telefono, email, fecha_registro }
     });
     res.status(201).json(result.rows[0]);
@@ -53,7 +53,7 @@ export const createClient = async (req, res) => {
   const { nombre, direccion, telefono, email, fecha_registro } = req.body;
   try {
     const result = await db.execute({
-      sql: 'INSERT INTO libros ( nombre, direccion, telefono, email, fecha_registro ) VALUES (:nombre, :direccion, :telefono, :email, :fecha_registro) RETURNING *',
+      sql: 'INSERT INTO Clientes ( nombre, direccion, telefono, email, fecha_registro ) VALUES (:nombre, :direccion, :telefono, :email, :fecha_registro) RETURNING *',
       args: { nombre, direccion, telefono, email, fecha_registro }
     });
     res.status(201).json(result.rows[0]);

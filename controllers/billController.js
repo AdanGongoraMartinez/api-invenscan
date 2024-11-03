@@ -53,7 +53,7 @@ export const createBill = async (req, res) => {
   const { id_factura, id_cliente, fecha_factura, total } = req.body;
   try {
     const result = await db.execute({
-      sql: 'INSERT INTO libros (id_factura, id_cliente, fecha_factura, total) VALUES (:id_factura, :id_cliente, :fecha_factura, :total) RETURNING *',
+      sql: 'INSERT INTO Facturas (id_factura, id_cliente, fecha_factura, total) VALUES (:id_factura, :id_cliente, :fecha_factura, :total) RETURNING *',
       args: { id_factura, id_cliente, fecha_factura, total }
     });
     res.status(201).json(result.rows[0]);

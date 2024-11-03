@@ -53,7 +53,7 @@ export const createProduct = async (req, res) => {
   const { id_producto, nombre, descripcion, precio, categoria, fecha_agregado } = req.body;
   try {
     const result = await db.execute({
-      sql: 'INSERT INTO libros ( id_producto, nombre, descripcion, precio, categoria, fecha_agregado) VALUES (:id_producto, :nombre, :descripcion, :precio, :categoria, :fecha_agregado) RETURNING *',
+      sql: 'INSERT INTO Productos ( id_producto, nombre, descripcion, precio, categoria, fecha_agregado) VALUES (:id_producto, :nombre, :descripcion, :precio, :categoria, :fecha_agregado) RETURNING *',
       args: { id_producto, nombre, descripcion, precio, categoria, fecha_agregado }
     });
     res.status(201).json(result.rows[0]);

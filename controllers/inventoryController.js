@@ -26,7 +26,7 @@ export const deleteItem = async (req, res) => {
   const { id_inventario } = req.params;
   try {
     const result = await db.execute({
-      sql: 'DELETE FROM Productos WHERE id_inventario = (:id_inventario)',
+      sql: 'DELETE FROM Inventario WHERE id_inventario = (:id_inventario)',
       args: { id_inventario }
     });
     res.json(result.rows[0]);
@@ -39,7 +39,7 @@ export const updateItem = async (req, res) => {
   const { id_inventario, id_producto, cantidad_en_stock } = req.body;
   try {
     const result = await db.execute({
-      sql: 'UPDATE Productos SET id_producto=:id_producto, cantidad_en_stock=:cantidad_en_stock WHERE id_inventario=:id_inventario',
+      sql: 'UPDATE Inventario SET id_producto=:id_producto, cantidad_en_stock=:cantidad_en_stock WHERE id_inventario=:id_inventario',
       args: { id_inventario, id_producto, cantidad_en_stock }
     });
     res.status(201).json(result.rows[0]);
@@ -53,7 +53,7 @@ export const createItem = async (req, res) => {
   const { id_producto, cantidad_en_stock } = req.body;
   try {
     const result = await db.execute({
-      sql: 'INSERT INTO libros ( id_producto, cantidad_en_stock ) VALUES (:id_producto, :cantidad_en_stock ) RETURNING *',
+      sql: 'INSERT INTO Inventario ( id_producto, cantidad_en_stock ) VALUES (:id_producto, :cantidad_en_stock ) RETURNING *',
       args: { id_producto, cantidad_en_stock }
     });
     res.status(201).json(result.rows[0]);

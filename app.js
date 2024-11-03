@@ -7,6 +7,7 @@ import productRoutes from './routes/productRoutes.js';
 import inventoryRoutes from './routes/inventoryRoutes.js';
 import clientRoutes from './routes/clientRoutes.js';
 import billRoutes from './routes/billRoutes.js';
+import detailedBillRoutes from './routes/detailedBillRoutes.js';
 
 import { checkConnection } from './db.js';
 dotenv.config();
@@ -24,6 +25,7 @@ app.use('/product', productRoutes);
 app.use('/inventory', inventoryRoutes);
 app.use('/clients', clientRoutes);
 app.use('/bills', billRoutes);
+app.use('/detailedBill', detailedBillRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
